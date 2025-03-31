@@ -1,6 +1,8 @@
 # Adding new categories to the Scope 3 - Category 15 (Investments)
 This repo provides guidance on adding additional Investment categories to the Scope 3 - Category 15 (Investments). The Investments category is based on the Partnership for Carbon Accounting Financials (PCAF) methodology. It is an industry-led initiative enabling financial institutions to measure and disclose GHG emissions for loans and investments. For more details on Category 15: Investments, please refer to the [public documentation] https://learn.microsoft.com/en-us/industry/sustainability/calculate-scope3#category-15-investments 
 
+**Note**: The solution approach mentioned below strictly applies to 'Scope 3 -Category 15 (Investments) **ONLY**. Please don't apply the below steps to other Sustainability Data Definitions.
+
 # What is Scope 3- Category 15
 Category 15 (Investments) includes scope 3 emissions associated with the reporting company's investments in the reporting year, not already included in scope 1 and scope 2. This category is applicable to investors (i.e. companies that make an investment with the objective of making a profit) and companies that provide financial services. This category also applies to investors that are not profit driven (e.g. multilateral development banks), and the same calculation methods should be used. Investments are categorized as downastream scope 3 category because providing capital or financing is a service provided by the reporting company.
 
