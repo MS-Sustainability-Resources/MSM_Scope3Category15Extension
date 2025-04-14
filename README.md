@@ -116,7 +116,7 @@ Two new records with below information must be created under Sustainability data
 |4|Description|Text|Emissions generated from operation of investments (equity, debt investment, project finance) not included in Scope 1 and Scope 2. |Emissions generated from operation of investments (equity, debt investment, project finance) not included in Scope 1 and Scope 2. |
 |5|Entity logical name|Text|msdyn_investment|msdyn_emission|
 |6|Is virtual|Boolean|No|No|
-|7|Module|Lookup|No|No|
+|7|Module|Lookup|Carbon activities|Carbon emissions|
 |8|Query view Id|Text|*Paste the Activity viewID created in the previous step*| *Paste the emission viewID created in the previous step*|
 |9|Required field rules|Text|| |
 |10|Source definition detail|Lookup||15. Investments - Generic|
@@ -132,7 +132,7 @@ Two new records with below information must be created under Sustainability data
 |2|Is Enabled for Goals|Boolean|Yes|Yes|
 |3|Require Data Approval|Boolean|No|No|
 |4|Sustainability Data Definition|Lookup|15. Investments - Generic|15. Investments – Generic (Emissions)|
-|5|Allow As Source In Calculations|Boolean|msdyn_consumptionenddate|Ymsdyn_consumptionenddate|
+|5|Reporting date field|Date|msdyn_consumptionenddate|msdyn_consumptionenddate|
 
 ### 5. Create Business Rule to set Sustainability Data Definition
 
@@ -146,7 +146,7 @@ Then, set ‘Sustainability data definition’ field value to ‘15. Investments
 Otherwise, if ‘Sustainability data definition’ value is ‘15. Investments – Generic (Activities)’  
 Then, clear ‘Sustainability data definition’ field value.*
 
-![Business Rule for auto populating the Sustainability Data Definition on the form](image-8.png)
+![Business Rule for auto populating the Sustainability Data Definition on the form](292f17b6-6d34-4b21-beab-baf48923c764.png))
 
 ### 6. Migration to other environments
 
