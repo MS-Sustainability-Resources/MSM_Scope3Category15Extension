@@ -82,26 +82,38 @@ Add two views as per the below configuration.
 | SI. No    | Table Name     | View Name   | Columns    | Filter Criteria |
 |-----------------|----------------|----------------|----------------|----|
 | 1 | msdyn_investment  | Investments - Generic | *<<add the columns>>*  | *PCAF asset class type Equals 'Generic'* |
-| 2 | msdyn_emission | investments - Generic (Emissions)  | *<<add the columns>>* | *Emissions Source (deprecated) Equals Investments - Generic (OR) Emission source Equals 15. Investments - Generic (Emissions)* |
+| 2* | msdyn_emission | investments - Generic (Emissions)  | *<<add the columns>>* | *Emission source Equals 15. Investments - Generic (Emissions)* |
 
+ **Step 2 (instructions h, i, j below) can be performed after completing Section 3 below, which explains creating the new Sustainability data definition for the 'Generic' investment activity*.
 
-Steps for adding new view in Investment table
+**Steps for adding a new view in Investment table**
+
 a.	Open an existing view Investments - Business loans and unlisted equity under Investment table from custom solution
-b.	Click Save As button  Give new view name as Investments - Generic  Click OK
+
+b.	Click Save As button -> Give new view name as Investments - Generic -> Click OK
+
 c.	Click on “Edit filters” button
+
 d.	Set “PCAF asset class” Equals Generic  Click OK button
 ![View filter in Activities](image-6.png)
+
 e.	Publish Investment table
 f. Record the viewid of the above view as this is required to be stamped in the next step
 
 Steps for adding new view in Emission table
+
 f.	Open an existing view Investments - Business loans and unlisted equity (Emissions) under Emission table from default solution
-g.	Click Save As button  Give new view name as Investments - Generic (Emissions)  Click OK
+
+g.	Click Save As button -> Give new view name as Investments - Generic (Emissions) -> Click OK
+
 h.	Click on “Edit filters” button
-i.	Set “Emission source” Equals 15. Investments – Generic (Emissions)  Click OK button
+
+i.	Set “Emission source” Equals 15. Investments – Generic (Emissions) -> Click OK button
  ![view filter in Emissions](image-7.png)
+
 j.	Publish Emission table
-f. Record the viewid of the above view as this is required to be stamped in the next step
+
+k. Record the viewid of the above view as this is required to be stamped in the next step
 
 
 ### 3. Create Sustainability Data Definition Records to create new SDDs for 'Generic' category
@@ -117,7 +129,7 @@ Two new records with below information must be created under Sustainability data
 |5|Entity logical name|Text|msdyn_investment|msdyn_emission|
 |6|Is virtual|Boolean|No|No|
 |7|Module|Lookup|Carbon activities|Carbon emissions|
-|8|Query view Id|Text|*Paste the Activity viewID created in the previous step*| *Paste the emission viewID created in the previous step*|
+|8|Query view Id|Text|*Paste the Activity viewID created in the previous step*| *Paste the emission viewID created in the previous step (2-k)*|
 |9|Required field rules|Text|| |
 |10|Source definition detail|Lookup||15. Investments - Generic|
 |11|Subcategory|Lookup|15. Investments| 15. Investments|
@@ -146,7 +158,9 @@ Then, set ‘Sustainability data definition’ field value to ‘15. Investments
 Otherwise, if ‘Sustainability data definition’ value is ‘15. Investments – Generic (Activities)’  
 Then, clear ‘Sustainability data definition’ field value.*
 
-![Business Rule for auto populating the Sustainability Data Definition on the form](292f17b6-6d34-4b21-beab-baf48923c764.png))
+![Business Rule for auto populating the Sustainability Data Definition on the form](image-11.png)
+
+**Note**: What is important is to ensure the 'Sustainability Data Definition' is filled out appropriately as per the tagged custom PCAF Asset Class Type. Rest is the logic as per your needs.
 
 ### 6. Migration to other environments
 
