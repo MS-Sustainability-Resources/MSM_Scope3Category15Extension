@@ -84,7 +84,7 @@ Add two views as per the below configuration.
 | 1 | msdyn_investment  | Investments - Generic | *<<add the columns>>*  | *PCAF asset class type Equals 'Generic'* |
 | 2* | msdyn_emission | investments - Generic (Emissions)  | *<<add the columns>>* | *Emission source Equals 15. Investments - Generic (Emissions)* |
 
- **Step 2 (instructions h, i, j below) can be performed after completing Section 3 below, which explains creating the new Sustainability data definition for the 'Generic' investment activity*.
+ **Important**: *Step 2 (instructions h, i, j below) can be performed after completing Section 3 below, which explains creating the new Sustainability data definition for the 'Generic' investment activity*.
 
 **Steps for adding a new view in Investment table**
 
@@ -115,6 +115,20 @@ j.	Publish Emission table
 
 k. Record the viewid of the above view as this is required to be stamped in the next step
 
+### Investment Main Form
+Main form and field configurations must be applied to the Investment entity as described below. Please note that these configurations must be included in the custom solution so that they can be migrated go to other environment via solution deployment process.
+
+**Steps for adding Sustainability Data Definition field in Investment Main Form**
+
+a. Open an existing Investments main form.
+
+b. Add the **Sustainability Data Definition** field to a suitable section on the form.
+
+c. Set the visibility of the field as per your needs.
+
+d. Save and publish the form to apply the changes.
+
+![Sustainability Data Definition field added to the Investment form](https://github.com/user-attachments/assets/8c1a1dcc-9e28-40bb-a9c2-ef65519dbf8c)
 
 ### 3. Create Sustainability Data Definition Records to create new SDDs for 'Generic' category
 
@@ -152,17 +166,19 @@ This step is required when there is a need to manually enter the new Investment 
 
 1. Create a new Business Rule under the custom solution
 2. Business rule is defined as follows
+3. The scope of the business rule should be set to **All Forms**
 
 *If PCAF asset class = Generic  
-Then, set ‘Sustainability data definition’ field value to ‘15. Investments – Generic (Activities)’  
-Otherwise, if ‘Sustainability data definition’ value is ‘15. Investments – Generic (Activities)’  
-Then, clear ‘Sustainability data definition’ field value.*
+Then, set ‘Sustainability data definition’ field value to ‘15. Investments – Generic (Activities)’*
 
-![Business Rule for auto populating the Sustainability Data Definition on the form](image-11.png)
+![Business Rule for auto populating the Sustainability Data Definition on the form](https://github.com/user-attachments/assets/e159fc92-e780-4903-831c-884d66d44421)
 
 **Note**: What is important is to ensure the 'Sustainability Data Definition' is filled out appropriately as per the tagged custom PCAF Asset Class Type. Rest is the logic as per your needs.
 
 ### 6. Migration to other environments
+
+#### Solution packaging
+The solution must include the **Sustainability Data Definition** object, since it’s used in the business rule and needed for the deployment.
 
 #### Configuration Migration
 Repeat the solution deployment steps in each environment to import the changed/new components (of table views and global option set, Business Rue). If the upstream environment is of Production type, consider importing a managed solution of the custom solution to prevent direct changes.
@@ -170,13 +186,23 @@ Repeat the solution deployment steps in each environment to import the changed/n
 #### Data Migration
 Use the Configuration Migration Tool (CMT) to migrate the configuration data created (step 3, 4 above).  Follow the steps below to migrate the configuration data from one environment to another:
 A.	Download latest Dynamics 365 SDK and extract.
+
 B.	Navigate and open ConfigMigration folder.
+
 C.	Open config migration tool by double clicking “DataMigrationUtility.exe” file.
+
 D.	Select Import data radio button -> Click Continue button
+
 ![CMT-Import data option](image-9.png)
+
 E.	Select Display list of available organizations and Show Advanced check boxes
+
 F.	Enter the User Name and Password -> Click Login button
+
 G.	Select the organization to which the data needs to be imported -> Click Login button
+
 H.	Click browse button and select the .zip data file  Click Import Data button
+
 I.	Ensure there are no errors or warnings reported, and all four records are created successfully -> Click Exit button
+
 ![CMT-ImportStatus](image-10.png)
